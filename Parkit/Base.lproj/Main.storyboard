@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--MapVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapVC" id="BYZ-38-t0r" customClass="MapVC" customModule="Parkit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,90 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="a8z-aN-v1v">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Hx-uo-wbr">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" id="ibh-GT-iIx">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="U2v-ju-wvJ" customClass="CustomButton" customModule="Parkit" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="7" width="50" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="02d-Lb-yh8"/>
+                                                <constraint firstAttribute="width" constant="50" id="sOi-0X-EbD"/>
+                                            </constraints>
+                                            <state key="normal" title="Pin"/>
+                                            <connections>
+                                                <action selector="centerOnPinBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ILi-zd-RiC"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ar4-vu-7Jy"/>
+                                    <barButtonItem style="plain" id="3ID-cd-hHu">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="34c-p3-Pd6" customClass="CustomButton" customModule="Parkit" customModuleProvider="target">
+                                            <rect key="frame" x="102" y="2" width="170" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
+                                            <state key="normal" title="Set Pin"/>
+                                            <connections>
+                                                <action selector="setPinBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Yl-TW-AYU"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="KZA-1c-Pii"/>
+                                    <barButtonItem style="plain" id="g6i-P8-wDY">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YMa-vh-Upd" customClass="CustomButton" customModule="Parkit" customModuleProvider="target">
+                                            <rect key="frame" x="309" y="7" width="50" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="T6m-EW-GtZ"/>
+                                                <constraint firstAttribute="height" constant="30" id="b6n-5I-Jgl"/>
+                                            </constraints>
+                                            <state key="normal" title="Center"/>
+                                            <connections>
+                                                <action selector="centerOnCurrentLocationBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J76-tO-zH7"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add note here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="paV-Gp-6bo">
+                                <rect key="frame" x="16" y="583" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="PlE-GS-DPa"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9Hx-uo-wbr" firstAttribute="top" secondItem="paV-Gp-6bo" secondAttribute="bottom" constant="10" id="9Ks-99-rDp"/>
+                            <constraint firstItem="9Hx-uo-wbr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XW6-Lz-e8s"/>
+                            <constraint firstItem="paV-Gp-6bo" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="auI-aX-dwN"/>
+                            <constraint firstItem="a8z-aN-v1v" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bEt-h8-UZa"/>
+                            <constraint firstAttribute="trailing" secondItem="a8z-aN-v1v" secondAttribute="trailing" id="cJP-gY-Q46"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9Hx-uo-wbr" secondAttribute="bottom" id="fT1-Rl-fCn"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="a8z-aN-v1v" secondAttribute="bottom" id="g6a-Tu-0xk"/>
+                            <constraint firstItem="a8z-aN-v1v" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gjd-hX-1bI"/>
+                            <constraint firstAttribute="trailing" secondItem="9Hx-uo-wbr" secondAttribute="trailing" id="kcQ-C7-n1a"/>
+                            <constraint firstItem="paV-Gp-6bo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="wnA-qy-JMe"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="centerOnPinBtn" destination="U2v-ju-wvJ" id="Pdf-co-lcl"/>
+                        <outlet property="noteTextField" destination="paV-Gp-6bo" id="mYC-vU-ua7"/>
+                        <outlet property="setRemovePinBtn" destination="34c-p3-Pd6" id="Tco-JV-pTp"/>
+                        <outlet property="theMap" destination="a8z-aN-v1v" id="qGJ-Eb-xfC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
         </scene>
     </scenes>
 </document>
