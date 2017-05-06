@@ -53,6 +53,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIT
             self.annotation.title = (defaults.value(forKey: Constants.Defaults.savedNote) as! String)
             
             setRemovePinBtn.setTitle("Remove Pin", for: .normal)
+            noteTextField.isHidden = true
             
         } else{
             print("else")
